@@ -1,0 +1,11 @@
+name: bible_package
+description: 공유 성경 패키지 - 성경 데이터 로드, 구절 조회, 참조 파싱
+
+publish_to: 'none'
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter

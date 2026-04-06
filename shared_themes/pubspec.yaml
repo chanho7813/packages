@@ -1,0 +1,11 @@
+name: shared_themes
+description: 공유 테마 패키지 - 암송/기도 앱 공통 색상 테마 시스템
+
+publish_to: 'none'
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter

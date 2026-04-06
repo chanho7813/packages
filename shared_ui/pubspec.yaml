@@ -1,0 +1,14 @@
+name: shared_ui
+description: 공유 UI 위젯 패키지 - 암송/기도 앱 공통 위젯
+
+publish_to: 'none'
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_svg: ^2.0.0
+  shared_themes:
+    path: ../shared_themes
