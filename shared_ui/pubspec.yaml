@@ -11,4 +11,6 @@ dependencies:
     sdk: flutter
   flutter_svg: ^2.0.0
   shared_themes:
-    path: ../shared_themes
+    git:
+      url: https://github.com/chanho7813/packages.git
+      path: shared_themes
