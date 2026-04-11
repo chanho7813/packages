@@ -169,6 +169,17 @@ class AppColorThemes {
     cardBackground: Colors.white,
   );
 
+  static const indigo = AppColorTheme(
+    name: 'indigo',
+    description: '모던 다크블루/틸',
+    descriptionEn: 'Modern Dark Blue / Teal',
+    primary: Color(0xFF1A237E),
+    accent: Color(0xFF26A69A),
+    secondary: Color(0xFF4DB6AC),
+    background: Colors.white,
+    cardBackground: Colors.white,
+  );
+
   static const slate = AppColorTheme(
     name: 'slate',
     description: '부드러운 슬레이트 블루',
@@ -192,12 +203,7 @@ class AppColorThemes {
   );
 
   /// 모든 테마 목록
-  static const List<AppColorTheme> all = [
-    white,
-    brown,
-    green,
-    slate,
-  ];
+  static const List<AppColorTheme> all = [white, brown, green, indigo, slate];
 
   /// getByName — 테마 이름으로 조회
   static AppColorTheme? getByName(String name) {
