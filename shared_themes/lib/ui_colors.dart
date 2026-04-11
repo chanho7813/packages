@@ -72,7 +72,7 @@ class UIColors {
   Color get pageBackground => theme.background;
 
   /// 카드 배경
-  Color get cardBackground => Colors.white;
+  Color get cardBackground => theme.cardBackground;
 
   /// 아이콘 배경
   Color get iconBackground => Colors.grey[100]!;
@@ -84,7 +84,7 @@ class UIColors {
   Color get chipBackgroundSelected => theme.primary;
 
   /// 카테고리 칩 배경 (비선택)
-  Color get categoryChipBackground => Colors.white;
+  Color get categoryChipBackground => theme.cardBackground;
 
   /// 카테고리 칩 배경 (선택)
   Color get categoryChipBackgroundSelected => theme.primary;
@@ -93,7 +93,8 @@ class UIColors {
   Color badgeBackground(Color baseColor) => baseColor.withValues(alpha: 0.1);
 
   /// 카테고리 칩 카운트 뱃지 배경 (선택)
-  Color get categoryChipCountBadgeSelected => Colors.white.withValues(alpha: 0.2);
+  Color get categoryChipCountBadgeSelected =>
+      Colors.white.withValues(alpha: 0.2);
 
   /// 카테고리 칩 카운트 뱃지 배경 (비선택)
   Color get categoryChipCountBadgeUnselected => Colors.grey[100]!;
@@ -160,35 +161,35 @@ class UIColors {
 
   /// 카드 그림자
   List<BoxShadow> get cardShadows => [
-        BoxShadow(
-          color: Colors.black.withValues(alpha: 0.1),
-          blurRadius: 8,
-          offset: const Offset(0, 2),
-        ),
-        BoxShadow(
-          color: Colors.black.withValues(alpha: 0.06),
-          blurRadius: 3,
-          offset: const Offset(0, 1),
-        ),
-      ];
+    BoxShadow(
+      color: Colors.black.withValues(alpha: 0.1),
+      blurRadius: 8,
+      offset: const Offset(0, 2),
+    ),
+    BoxShadow(
+      color: Colors.black.withValues(alpha: 0.06),
+      blurRadius: 3,
+      offset: const Offset(0, 1),
+    ),
+  ];
 
   /// 팝업 그림자
   List<BoxShadow> get popupShadows => [
-        BoxShadow(
-          color: Colors.black.withValues(alpha: 0.12),
-          blurRadius: 24,
-          offset: const Offset(0, 4),
-        ),
-      ];
+    BoxShadow(
+      color: Colors.black.withValues(alpha: 0.12),
+      blurRadius: 24,
+      offset: const Offset(0, 4),
+    ),
+  ];
 
   /// 작은 요소 그림자
   List<BoxShadow> get circleShadows => [
-        BoxShadow(
-          color: Colors.black.withValues(alpha: 0.1),
-          blurRadius: 4,
-          offset: const Offset(0, 2),
-        ),
-      ];
+    BoxShadow(
+      color: Colors.black.withValues(alpha: 0.1),
+      blurRadius: 4,
+      offset: const Offset(0, 2),
+    ),
+  ];
 
   // ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   // 상수 색상 (테마 무관)
