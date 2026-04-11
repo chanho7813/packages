@@ -169,28 +169,6 @@ class AppColorThemes {
     cardBackground: Colors.white,
   );
 
-  static const purple = AppColorTheme(
-    name: 'purple',
-    description: '우아한 퍼플/인디고',
-    descriptionEn: 'Elegant Purple / Indigo',
-    primary: Color(0xFF8E6BA8),
-    accent: Color(0xFFAB47BC),
-    secondary: Color(0xFFBA68C8),
-    background: Colors.white,
-    cardBackground: Colors.white,
-  );
-
-  static const indigo = AppColorTheme(
-    name: 'indigo',
-    description: '모던 다크블루/틸',
-    descriptionEn: 'Modern Dark Blue / Teal',
-    primary: Color(0xFF1A237E),
-    accent: Color(0xFF26A69A),
-    secondary: Color(0xFF4DB6AC),
-    background: Colors.white,
-    cardBackground: Colors.white,
-  );
-
   static const slate = AppColorTheme(
     name: 'slate',
     description: '부드러운 슬레이트 블루',
@@ -218,8 +196,6 @@ class AppColorThemes {
     white,
     brown,
     green,
-    purple,
-    indigo,
     slate,
   ];
 
