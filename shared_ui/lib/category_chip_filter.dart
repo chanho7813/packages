@@ -4,6 +4,7 @@
 ///       "전체" 탭과 각 카테고리 탭을 칩 형태로 나열하며, 선택 상태에 따라 색상이 변한다.
 ///       선택된 탭이 항상 보이도록 자동 스크롤한다.
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:shared_themes/shared_themes.dart';
 
 /// CategoryChipFilter
@@ -45,6 +46,9 @@ class CategoryChipFilter extends StatefulWidget {
 
 class _CategoryChipFilterState extends State<CategoryChipFilter> {
   final List<GlobalKey> _chipKeys = [];
+  final ScrollController _scrollController = ScrollController();
+
+  static const double _horizontalPadding = 20;
 
   @override
   void initState() {
@@ -53,11 +57,17 @@ class _CategoryChipFilterState extends State<CategoryChipFilter> {
   }
 
   @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
   void didUpdateWidget(covariant CategoryChipFilter oldWidget) {
     super.didUpdateWidget(oldWidget);
     _ensureKeys();
     if (oldWidget.selectedIndex != widget.selectedIndex) {
-      _scrollToSelected();
+      WidgetsBinding.instance.addPostFrameCallback((_) => _scrollToSelected());
     }
   }
 
@@ -73,9 +83,20 @@ class _CategoryChipFilterState extends State<CategoryChipFilter> {
     if (index < 0 || index >= _chipKeys.length) return;
     final keyContext = _chipKeys[index].currentContext;
     if (keyContext == null) return;
-    Scrollable.ensureVisible(
-      keyContext,
-      alignment: 0.0,
+    if (!_scrollController.hasClients) return;
+
+    final RenderObject renderObj = keyContext.findRenderObject()!;
+    final viewport = RenderAbstractViewport.of(renderObj);
+    final double offsetToReveal = viewport.getOffsetToReveal(renderObj, 0.0).offset;
+
+    // ListView padding만큼 빼서 처음 진입 시와 동일한 여백 유지
+    final double adjusted = (offsetToReveal - _horizontalPadding).clamp(
+      _scrollController.position.minScrollExtent,
+      _scrollController.position.maxScrollExtent,
+    );
+
+    _scrollController.animateTo(
+      adjusted,
       duration: const Duration(milliseconds: 250),
       curve: Curves.easeOut,
     );
@@ -90,8 +111,9 @@ class _CategoryChipFilterState extends State<CategoryChipFilter> {
       height: 52,
       padding: const EdgeInsets.symmetric(vertical: 8),
       child: ListView.separated(
+        controller: _scrollController,
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: _horizontalPadding),
         itemCount: itemCount,
         separatorBuilder: (_, __) => const SizedBox(width: 8),
         itemBuilder: (context, index) {
